@@ -34,7 +34,7 @@
                     {% if p.hook_text %}
                         <h5 class="text-muted">{{ p.hook_text }}</h5>
                     {% endif %}
-                    <p class="card-text">{{ p.content | truncatewords:45 }}</p>
+                    <p class="card-text">{{ p.get_content_markdown | truncatewords_html:45 | safe }}</p>
 
                     {% if p.tags.exists %}
                         <i class="fas fa-tags"></i>
