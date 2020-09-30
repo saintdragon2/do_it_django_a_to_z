@@ -44,7 +44,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p>{{ post.content }}</p>
+        <p>{{ post.get_content_markdown | safe }}</p>
 
         {% if post.tags.exists %}
             <i class="fas fa-tags"></i>
