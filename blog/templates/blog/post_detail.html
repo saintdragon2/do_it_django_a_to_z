@@ -101,7 +101,7 @@
             {% for comment in post.comment_set.iterator %}
                 <!-- Single Comment -->
                 <div class="media mb-4" id="comment-{{ comment.pk }}">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <img class="d-flex mr-3 rounded-circle" src="{{ comment.get_avatar_url }}" alt="{{ comment.author }}" width="60px">
                     <div class="media-body">
                         {% if user.is_authenticated and comment.author == user %}
                             <div class="float-right">
