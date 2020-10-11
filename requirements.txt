@@ -22,6 +22,7 @@ parso==0.7.1
 pickleshare==0.7.5
 Pillow==7.2.0
 prompt-toolkit==3.0.7
+psycopg2==2.8.6
 Pygments==2.7.1
 python3-openid==3.2.0
 pytz==2020.1
