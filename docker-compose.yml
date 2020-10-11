@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn do_it_django_prj.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./:/usr/src/app/
     ports:
