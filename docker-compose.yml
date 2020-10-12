@@ -6,10 +6,19 @@ services:
     volumes:
       - static_volume:/usr/src/app/_static
       - media_volume:/usr/src/app/_media
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - web
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
   web:
     build: .
     command: gunicorn do_it_django_prj.wsgi:application --bind 0.0.0.0:8000
